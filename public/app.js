@@ -15,29 +15,22 @@ app.controller('myCtrl', function($scope, CrawlService, ToneService){
 
 		CrawlService.getContents(url)
 			.then(function(data) {
-				
+				// useless relic error handling
 				if(data.error){
-
 					var errorData = JSON.parse(data.error.data);
 					$scope.twitterErrors = errorData.errors[0].message;
-
 				} 
 				else if (data.result) {
-
+					// grab crawled headlines and join them with periods
 					$scope.contents = data.result.contents;
-
 					$scope.contents = $scope.contents.join('. ');
-					
-					console.log($scope.contents);
 
+					// send to tone service
 					var toneInput = {"toneInput": $scope.contents};
 					return ToneService.getTone(toneInput);
 				}
 
 			}).then(function(data) {
-
-				console.log(data);
-
 				$scope.currentTone = data.result;
 
 				// get the list of overall tones
@@ -45,21 +38,14 @@ app.controller('myCtrl', function($scope, CrawlService, ToneService){
 				angular.forEach(data.result.tone.document_tone.tones, function (tone) {
 					overallTones.push(tone.tone_id);
 				});
-				console.log(overallTones);
 
 				// get the list of tones per sentence
 				var tones = [];
 				angular.forEach(data.result.tone.sentences_tone, function (sentenceTones) {
-
-					console.log(sentenceTones);
-
 					angular.forEach(sentenceTones.tones, function (tone) {
 						tones.push(tone.tone_id);
 					});		        
 				});
-				console.log("tones:");
-				console.log(tones);
-
 			});
 
 	}
@@ -102,7 +88,6 @@ app.factory('ToneService', function($http, $q){
 	return {
 		getTone : getTone
 	}
-
 });
 
 app.factory('CrawlService', function($http, $q){
@@ -111,7 +96,6 @@ app.factory('CrawlService', function($http, $q){
 		var d = $q.defer();
 		$http.post('/crawl', {"url": url})
 		.success(function(contents){
-			console.log(contents);
 			return d.resolve(contents);
 		})
 		.error(function(error){
@@ -124,5 +108,4 @@ app.factory('CrawlService', function($http, $q){
 	return {
 		getContents : getContents
 	}
-
 });
