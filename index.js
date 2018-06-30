@@ -91,42 +91,8 @@ app.post('/crawl', function (req, res) {
 			else {
 				var $ = response.$; // cheerio
 				var contents = [];
-				
-				// grab p contents
-				// $("p").each(function(i, element) {
-				// 	if(element.children[0]) {
-				// 		var content = element.children[0].data;
-				// 		contents.push(content);
-				// 	}
-				// });
-				// //also grab a contents? this may make tone less accurate
-				// $("a").each(function(i, element) {
-				// 	if(element.children[0]) {
-				// 		var link = element.children[0].data;
-				// 		contents.push(link);
-				// 	}
-				// });
 
-				// breitbart top stories
-				$("h2.title").each(function(i, element) {
-					if(element.children[0] && element.children[0].children && element.children[0].children[0]) {
-						var headline = element.children[0].children[0].data;
-						console.log(headline);
-						contents.push(headline);
-					}
-				});
-
-				// other breitbart?
-				// $("em").each(function(i, element) {
-
-				// 	if(element.firstChild && element.firstChild.data) {
-				// 		var headline = element.firstChild.data;
-				// 		console.log(headline);
-				// 		contents.push(headline);
-				// 	}
-				// });
-
-				// washpo headlines
+				// catch some headlines
 				$("div.headline").each(function(i, element) {
 					if(element.children[0] && element.children[0].children && element.children[0].children[0]) {
 						var headline = element.children[0].children[0].data;
@@ -142,15 +108,6 @@ app.post('/crawl', function (req, res) {
 						contents.push(headline);
 					}
 				});
-
-				// grab p contents
-				// $("p").each(function(i, element) {
-				// 	if(element.children[0]) {
-				// 		var content = element.children[0].data;
-				// 		contents.push(content);
-				// 	}
-				// });
-
 
 				res.send({
 					result : {
