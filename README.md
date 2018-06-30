@@ -1,5 +1,5 @@
 # Headline Sonifier
-Grab headlines from major news sources (questionable, in the case of Breitbart) and then send the headlines into IBM's Tone Analyzer. Convert the tones into chord progressions.
+Grab headlines from major news sources (questionable, in the case of Breitbart) and then send the headlines into IBM's Tone Analyzer. Convert the tones into chord progressions. Listen to mostly sad music.
 
 ## Installation
 
