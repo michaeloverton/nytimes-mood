@@ -1,19 +1,2 @@
-# Headline Sonifier
-Grab headlines from major news sources (questionable, in the case of Breitbart) and then send the headlines into IBM's Tone Analyzer. Convert the tones into chord progressions. Listen to mostly sad music.
-
-## Installation
-
-```
-npm install
-bower install
-```
-
-## Run Application
-
-```
-nodemon index.js
-or
-node index.js
-```
-
-Site runs on http://localhost:3000/
+# How is the New York Times?
+Grab headlines from the New York Times and sends them into IBM's Tone Analyzer. We learn how it's feeling.
