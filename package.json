@@ -1,8 +1,13 @@
 {
-  "name": "twitter-api-node-express",
-  "description": "Twitter JS Client Hooked in with Node and Express",
+  "name": "nytimes-mood",
+  "description": "How is the New York Times feeling?",
   "version": "0.1.0",
-  "author": "Jacob Carter",
+  "author": "Michael Brown",
+  "scripts": {
+    "restart": "pm2 startOrRestart ecosystem.config.js",
+    "deploy": "pm2 deploy ecosystem.config.js production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "body-parser": "^1.12.2",
     "crawler": "^1.1.2",
@@ -10,5 +15,8 @@
     "twitter-js-client": "*",
     "watson-developer-cloud": "^3.0.6"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "pm2": "^2.10.4"
+  }
 }
