@@ -111,6 +111,16 @@ app.post('/crawl', function (req, res) {
 					}
 				});
 
+				// other breitbart?
+				// $("em").each(function(i, element) {
+
+				// 	if(element.firstChild && element.firstChild.data) {
+				// 		var headline = element.firstChild.data;
+				// 		console.log(headline);
+				// 		contents.push(headline);
+				// 	}
+				// });
+
 				// washpo headlines
 				$("div.headline").each(function(i, element) {
 					if(element.children[0] && element.children[0].children && element.children[0].children[0]) {
@@ -124,10 +134,17 @@ app.post('/crawl', function (req, res) {
 				$("h2.story-heading").each(function(i, element) {
 					if(element.children[0] && element.children[0].children && element.children[0].children[0]) {
 						var headline = element.children[0].children[0].data;
-						console.log(headline);
 						contents.push(headline);
 					}
 				});
+
+				// grab p contents
+				// $("p").each(function(i, element) {
+				// 	if(element.children[0]) {
+				// 		var content = element.children[0].data;
+				// 		contents.push(content);
+				// 	}
+				// });
 
 
 				res.send({
@@ -141,7 +158,6 @@ app.post('/crawl', function (req, res) {
 	}]);
 
 });
-
 
 var server = app.listen(3000, function () {
 	var host = server.address().address;

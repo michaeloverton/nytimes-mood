@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 	<head>
-		<title>Twitter API with Javascript/Node/Express</title>
+		<title>How is the New York Times?</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<!-- Bootstrap -->
 		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -9,68 +9,22 @@
 	<body class="home" ng-controller="myCtrl">
 		<div class="container">
 
-			<div class="row">
+			<div class="row" ng-if="currentTone.tone.document_tone.tones != undefined">
 				<div class="col-xs-12">
-					<h1 class="text-center">musical news</h1>
+					<h1 class="text-center" 
+						style="font-family: 'Times New Roman', Times, serif; font-size: 40px">
+							The New York Times is {{toneDescriptions[getDominantTone(currentTone.tone.document_tone.tones)]}}
+					</h1>
 				</div>
 			</div>
-
-			<!-- get url tones -->
-			<div class="row" style="margin-top:50px;">
-				<div class="col-xs-12">
-					<input class="form-control" type="text" placeholder="www.nytimes.com" ng-model="url">
-					<br>
-					<br>
-					<p class="text-center"><button class="btn btn-primary" ng-click="getUrlTones(url)">Get Url Tones</button></p>
-
-					<p class="text-center"><button class="btn btn-primary" ng-click="getUrlTones('http://nytimes.com')">New York Times</button></p>
-
-					<p class="text-center"><button class="btn btn-primary" ng-click="getUrlTones('http://www.breitbart.com')">Breitbart</button></p>
-
-					<p class="text-center"><button class="btn btn-primary" ng-click="getUrlTones('http://www.washingtonpost.com')">Washington Post</button></p>
-				</div>
-			</div>
-
-			<h1>{{newTone}}</h1>
 
 			{{currentTone.tone.document_tone.tones}}
-
-			<div ng-repeat-start="sentenceTones in currentTone.tone.sentences_tone">
-				<div ng-if="sentenceTones.tones.length > 0">
-					<b>Sentence {{sentenceTones.sentence_id}}:</b>
-					<p>{{sentenceTones.text}}</p>
-					<div ng-repeat="tone in sentenceTones.tones">
-						{{tone.tone_name}}
-					</div>
-				</div>
-			</div>
-
-			<!-- ERRORS -->
-			<div ng-repeat-end class="row" ng-if="twitterErrors">
-				<div class="col-xs-12">
-					<div class="alert alert-danger">
-						{{twitterErrors}}
-					</div>
-				</div>
-			</div>
-
-			<div class="row" style="margin-top:50px;" ng-if="results">
-				<div class="col-xs-12">
-
-					<p>{{currentTweet}}</p>
-
-					<p>{{currentTone}}</p>
-
-				</div>
-			</div>
-
 
 		</div>
 
 		<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
-		<script src="/wad.min.js"></script>
 		<script src="/app.js"></script>
 		
 	</body>
