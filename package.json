@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "pm2": "^2.10.4"
+    "pm2": "^2.10.4",
+    "serve-favicon": "^2.5.0"
   }
 }

@@ -5,6 +5,11 @@ var bodyParser = require('body-parser');
 var ToneAnalyzer = require('watson-developer-cloud/tone-analyzer/v3');
 var Crawler = require("crawler");
 var config = require("./config");
+var favicon = require('serve-favicon');
+var path = require('path');
+
+// favicon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // setup
 var toneAnalyzer = new ToneAnalyzer(config.ibm);
