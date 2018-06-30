@@ -1,0 +1,18 @@
+{
+  "name": "twitter-api-node-express",
+  "homepage": "https://github.com/jacobscarter/Twitter-API-with-Node-and-Express",
+  "version": "0.1.0",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "ca420762b1a948db4ef96485151fb7f8564d21be"
+  },
+  "_source": "https://github.com/jacobscarter/Twitter-API-with-Node-and-Express.git",
+  "_target": "^0.1.0",
+  "_originalSource": "twitter-api-node-express",
+  "_direct": true,
+  "dependencies": {
+    "Wad": "wad#^2.7.2"
+  }
+}
