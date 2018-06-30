@@ -8,7 +8,7 @@ npm install
 bower install
 ```
 
-##Run Application
+## Run Application
 
 ```
 nodemon index.js
