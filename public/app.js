@@ -6,7 +6,7 @@ app.controller('myCtrl', function($scope, CrawlService, ToneService){
 		'sadness' : 'sad',
 		'joy' : 'happy',
 		'fear' : 'afraid',
-		'tentative' : 'tentative',
+		'tentative' : 'nervous',
 		'analytical' : 'analytical',
 		'confident' : 'confident'
 	}
