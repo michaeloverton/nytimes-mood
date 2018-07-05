@@ -3,12 +3,13 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, CrawlService, ToneService){
 
 	$scope.toneDescriptions = {
-		'sadness' : 'sad',
-		'joy' : 'happy',
-		'fear' : 'afraid',
-		'tentative' : 'nervous',
-		'analytical' : 'analytical',
-		'confident' : 'confident'
+		'sadness' : 'is sad',
+		'joy' : 'is trying to be happy',
+		'fear' : 'is afraid',
+		'tentative' : 'is nervous',
+		'analytical' : 'feels analytical',
+		'confident' : 'is confident',
+		'empty' : 'isn\'t sure'
 	}
 
 	$scope.getUrlTones = function(url) {
@@ -52,6 +53,10 @@ app.controller('myCtrl', function($scope, CrawlService, ToneService){
 
 	$scope.getDominantTone = function(tones) {
 		var tone = undefined;
+		// if no tones, return
+		if(tones[0] == undefined) {
+			return "empty";
+		}
 		for(var i=0; i<tones.length; i++ ) {
 			var currentTone = tones[i];
 			// favor these tones, as joy tends to be a false positive with nytimes
